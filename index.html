@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Danda Rishitha Chowdary | Professional Portfolio</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #05070f;
+      color: #eef2ff;
+      line-height: 1.5;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Live animated wallpaper - advanced particle network */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 30% 10%, #0a0f1f, #02040c);
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    /* Premium glassmorphism */
+    .glass-card {
+      background: rgba(12, 20, 35, 0.55);
+      backdrop-filter: blur(14px);
+      border-radius: 2rem;
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .glass-card:hover {
+      border-color: rgba(0, 200, 255, 0.7);
+      transform: translateY(-6px);
+      box-shadow: 0 30px 45px -12px rgba(0, 120, 255, 0.25);
+    }
+
+    /* Hero Section */
+    .hero-advanced {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      padding: 2.5rem 2.5rem;
+      background: linear-gradient(135deg, rgba(10, 20, 45, 0.7), rgba(5, 10, 25, 0.8));
+      backdrop-filter: blur(16px);
+      border-radius: 2.5rem;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      animation: fadeInUp 0.9s ease-out;
+    }
+    .intro h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #a0c4ff, #3b82f6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .glow-text {
+      text-shadow: 0 0 8px rgba(59,130,246,0.3);
+    }
+    .quick-stats {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .stat-pill {
+      background: #1e2a4a;
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid #3b82f650;
+    }
+
+    /* Contact Grid */
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.8rem 1rem;
+      border-radius: 2rem;
+    }
+    .contact-item-modern {
+      background: rgba(25, 40, 65, 0.7);
+      border-radius: 2rem;
+      padding: 0.5rem 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s;
+      font-size: 0.85rem;
+      backdrop-filter: blur(4px);
+    }
+    .contact-item-modern a, .contact-item-modern span {
+      color: #eef2ff;
+      text-decoration: none;
+    }
+    .contact-item-modern:hover {
+      background: #2a3f6e;
+      transform: scale(1.02);
+    }
+
+    /* Section Headers */
+    .section-header {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, #eef2ff, #8bb9fe);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      border-left: 5px solid #3b82f6;
+      padding-left: 1.2rem;
+    }
+
+    /* Skills Grid - Detailed Measurable Form */
+    .skills-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .skill-card-detailed {
+      background: rgba(18, 28, 45, 0.7);
+      border-radius: 1.5rem;
+      padding: 1.3rem;
+      transition: all 0.2s;
+      border: 1px solid #2a3a60;
+    }
+    .skill-card-detailed:hover {
+      border-color: #3b82f6;
+      transform: translateY(-3px);
+    }
+    .skill-card-detailed h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-progress {
+      margin: 0.8rem 0;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+    .progress-bar-bg {
+      background: #1e2a3a;
+      border-radius: 20px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+    .skill-subtags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .micro-tag {
+      background: #0f172f;
+      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.7rem;
+      border: 1px solid #2d3e62;
+    }
+
+    /* Projects Section - Only TWO projects, detailed */
+    .projects-duo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .project-premium-card {
+      background: rgba(8, 16, 28, 0.7);
+      border-radius: 1.8rem;
+      padding: 1.8rem;
+      transition: all 0.3s;
+      border: 1px solid #2d3e62;
+    }
+    .project-premium-card:hover {
+      transform: translateY(-8px);
+      border-color: #3b82f6;
+      box-shadow: 0 20px 30px -12px #0f172f;
+    }
+    .project-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #60a5fa;
+    }
+    .project-premium-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1rem 0;
+    }
+    .tech-badge {
+      background: #1e2b4f;
+      border-radius: 30px;
+      padding: 0.3rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .project-features {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .project-features li {
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+    .project-features i {
+      color: #3b82f6;
+      width: 20px;
+    }
+
+    /* Other Sections Layout */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .card-content {
+      padding: 1.6rem;
+    }
+    .academic-item, .cert-item {
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px dashed rgba(59,130,246,0.3);
+    }
+    .achievement-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .achievement-card {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 1.2rem;
+      padding: 0.8rem 1.2rem;
+      flex: 1;
+      min-width: 160px;
+    }
+    .appreciation-list {
+      list-style: none;
+    }
+    .appreciation-list li {
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.6s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      opacity: 0.6;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 760px) {
+      .wrapper { padding: 1rem; }
+      .intro h1 { font-size: 2rem; }
+      .section-header { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+<div class="wrapper">
+  <!-- Hero Section with Introduction & Contact -->
+  <div class="hero-advanced reveal">
+    <div class="intro">
+      <h1>DANDA RISHITHA CHOWDARY</h1>
+      <div class="glow-text" style="font-size: 1.1rem; margin-top: 0.2rem;">Full-Stack Developer · MERN Specialist · AI Enthusiast</div>
+      <div class="quick-stats">
+        <span class="stat-pill"><i class="fas fa-graduation-cap"></i> B.Tech CSE · CGPA 8.17</span>
+        <span class="stat-pill"><i class="fas fa-chart-line"></i> 100% | 95.6% Academics</span>
+        <span class="stat-pill"><i class="fas fa-trophy"></i> Hackathon Winner</span>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item-modern"><i class="fas fa-envelope"></i> <a href="mailto:dandarishitha99@gmail.com">dandarishitha99@gmail.com</a></div>
+      <div class="contact-item-modern"><i class="fas fa-phone-alt"></i> <span>+91 7386151307</span></div>
+      <div class="contact-item-modern"><i class="fab fa-github"></i> <a href="https://github.com/RishithaChowdarydanda" target="_blank">RishithaChowdarydanda</a></div>
+      <div class="contact-item-modern"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rishithachowdary-danda-10386232a/" target="_blank">rishithachowdary-danda</a></div>
+      <div class="contact-item-modern"><i class="fab fa-leetcode"></i> <a href="https://leetcode.com/u/RishithaChowdary_Danda/" target="_blank">RishithaChowdary_Danda</a></div>
+    </div>
+  </div>
+
+  <!-- Professional Summary Card -->
+  <div class="glass-card reveal" style="margin-bottom: 2rem;">
+    <div class="card-content">
+      <div class="section-header"><i class="fas fa-user-astronaut"></i> Professional Summary</div>
+      <p style="font-size: 1rem; line-height: 1.6;">Detail-oriented Computer Science undergraduate with hands-on experience in building scalable full-stack web applications using the MERN stack. Skilled in designing and developing RESTful APIs, implementing secure authentication systems, and optimising application performance. Strong foundation in Data Structures, Algorithms, and Object-Oriented Programming (OOP). Adept at problem-solving and developing efficient, user-centric solutions. Passionate about leveraging modern technologies to build high-performance applications and continuously enhance technical expertise.</p>
+    </div>
+  </div>
+
+  <!-- ALL SKILLS - Detailed Measurable Form (every skill from resume) -->
+  <div class="reveal">
+    <div class="section-header"><i class="fas fa-chart-simple"></i> Technical Proficiency · Measured Skills</div>
+    <div class="skills-showcase">
+      <div class="skill-card-detailed">
+        <h3><i class="fab fa-react"></i> React.js & Frontend</h3>
+        <div class="skill-progress"><div class="progress-label"><span>Expertise</span><span>90%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="90"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">Components</span><span class="micro-tag">Hooks</span><span class="micro-tag">State Management</span><span class="micro-tag">Responsive UI</span></div>
+      </div>
+      <div class="skill-card-detailed">
+        <h3><i class="fab fa-node-js"></i> Node.js / Express.js</h3>
+        <div class="skill-progress"><div class="progress-label"><span>Proficiency</span><span>88%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="88"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">REST APIs</span><span class="micro-tag">JWT Auth</span><span class="micro-tag">Middleware</span><span class="micro-tag">Error Handling</span></div>
+      </div>
+      <div class="skill-card-detailed">
+        <h3><i class="fas fa-database"></i> MongoDB & MySQL</h3>
+        <div class="skill-progress"><div class="progress-label"><span>Database Design</span><span>85%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="85"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">Mongoose</span><span class="micro-tag">Aggregation</span><span class="micro-tag">Indexing</span><span class="micro-tag">JOINs</span></div>
+      </div>
+      <div class="skill-card-detailed">
+        <h3><i class="fas fa-code"></i> Java / Python / C</h3>
+        <div class="skill-progress"><div class="progress-label"><span>DSA & OOP</span><span>87%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="87"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">Data Structures</span><span class="micro-tag">Algorithms</span><span class="micro-tag">OOP Principles</span></div>
+      </div>
+      <div class="skill-card-detailed">
+        <h3><i class="fas fa-cloud"></i> REST APIs & Integration</h3>
+        <div class="skill-progress"><div class="progress-label"><span>API Development</span><span>86%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="86"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">Postman</span><span class="micro-tag">API Security</span><span class="micro-tag">Axios/Fetch</span></div>
+      </div>
+      <div class="skill-card-detailed">
+        <h3><i class="fab fa-git-alt"></i> Git & GitHub</h3>
+        <div class="skill-progress"><div class="progress-label"><span>Version Control</span><span>84%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="84"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">Branching</span><span class="micro-tag">Collaboration</span><span class="micro-tag">Git Workflow</span></div>
+      </div>
+      <div class="skill-card-detailed">
+        <h3><i class="fas fa-paint-brush"></i> HTML5 / CSS3</h3>
+        <div class="skill-progress"><div class="progress-label"><span>Web Styling</span><span>92%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="92"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">Flexbox/Grid</span><span class="micro-tag">Animations</span><span class="micro-tag">Responsive</span></div>
+      </div>
+      <div class="skill-card-detailed">
+        <h3><i class="fas fa-bug"></i> Debugging & Problem Solving</h3>
+        <div class="skill-progress"><div class="progress-label"><span>Analytical</span><span>89%</span></div><div class="progress-bar-bg"><div class="progress-fill" data-width="89"></div></div></div>
+        <div class="skill-subtags"><span class="micro-tag">VS Code</span><span class="micro-tag">DevTools</span><span class="micro-tag">Performance Opt.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS SECTION - EXACTLY TWO PROJECTS from resume -->
+  <div class="reveal" style="margin-top: 1rem;">
+    <div class="section-header"><i class="fas fa-microchip"></i> Featured Projects</div>
+    <div class="projects-duo">
+      <!-- Project 1: Fake News Detection System -->
+      <div class="project-premium-card">
+        <div class="project-icon"><i class="fas fa-newspaper"></i></div>
+        <h3>Fake News Detection System</h3>
+        <div class="project-tech-stack">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">NLP</span>
+          <span class="tech-badge">TF-IDF</span>
+          <span class="tech-badge">Logistic Regression</span>
+        </div>
+        <p>Developed an NLP-based model using TF-IDF and Logistic Regression, achieving ~85% accuracy. Performed data preprocessing and feature engineering to improve model performance. Evaluated model using accuracy, precision, recall, and F1-score metrics. Optimised model through tuning techniques, enhancing prediction efficiency.</p>
+        <ul class="project-features">
+          <li><i class="fas fa-chart-line"></i> ~85% classification accuracy</li>
+          <li><i class="fas fa-filter"></i> Advanced feature engineering & preprocessing</li>
+          <li><i class="fas fa-chart-bar"></i> Multi-metric evaluation (Precision, Recall, F1)</li>
+          <li><i class="fas fa-tachometer-alt"></i> Hyperparameter tuning for efficiency</li>
+        </ul>
+      </div>
+
+      <!-- Project 2: Ready-Go Web Application -->
+      <div class="project-premium-card">
+        <div class="project-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Ready-Go Web Application</h3>
+        <div class="project-tech-stack">
+          <span class="tech-badge">HTML5</span>
+          <span class="tech-badge">CSS3</span>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">Responsive Design</span>
+        </div>
+        <p>Developed a responsive and interactive web application using HTML5, CSS3, and JavaScript. Designed user-friendly interfaces with structured layouts and smooth navigation for better user experience. Implemented dynamic functionalities, form validation, and interactive UI components using JavaScript. Applied responsive design techniques using CSS Flexbox, Grid, animations, and media queries.</p>
+        <ul class="project-features">
+          <li><i class="fas fa-mobile-alt"></i> Fully responsive across all devices</li>
+          <li><i class="fas fa-check-circle"></i> Dynamic form validation & interactive UI</li>
+          <li><i class="fas fa-shapes"></i> CSS Flexbox, Grid & custom animations</li>
+          <li><i class="fas fa-chrome"></i> Cross-browser compatibility & performance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Academic Profile + Certifications -->
+  <div class="grid-2col" style="margin-top: 2rem;">
+    <div class="glass-card reveal">
+      <div class="card-content">
+        <div class="section-header" style="font-size: 1.5rem;"><i class="fas fa-university"></i> Academic Profile</div>
+        <div class="academic-item"><strong>VIGNAN FOUNDATION FOR SCIENCE, TECHNOLOGY AND RESEARCH (2023-2027)</strong><br>Bachelor of Technology in Computer Science and Engineering · CGPA: 8.17</div>
+        <div class="academic-item"><strong>BHASHYAM JUNIOR COLLEGE - GUNTUR (2021-2023)</strong><br>Senior Secondary Education - MPC · PERCENTAGE: 95.6%</div>
+        <div class="academic-item"><strong>BHASHYAM HIGH SCHOOL - GUNTUR (2020-2021)</strong><br>Secondary School Education · PERCENTAGE: 100%</div>
+      </div>
+    </div>
+    <div class="glass-card reveal">
+      <div class="card-content">
+        <div class="section-header" style="font-size: 1.5rem;"><i class="fas fa-certificate"></i> Certifications & Honours</div>
+        <div class="achievement-grid">
+          <div class="achievement-card"><i class="fas fa-trophy"></i> 24-Hour Web Hackathon</div>
+          <div class="achievement-card"><i class="fas fa-award"></i> Appreciation Certificate · NPTEL (3 courses)</div>
+          <div class="achievement-card"><i class="fas fa-laptop-code"></i> Byte XL Full Stack Hackathon</div>
+          <div class="achievement-card"><i class="fas fa-language"></i> B1 Level · Preliminary English Test (Cambridge)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appreciation & Volunteering -->
+  <div class="glass-card reveal">
+    <div class="card-content">
+      <div class="section-header"><i class="fas fa-heart"></i> Appreciation & Leadership</div>
+      <ul class="appreciation-list">
+        <li><i class="fas fa-star" style="color:#fbbf24;"></i> Stage and Quality Coordinator for National Level Fest "MAHOTSAV"</li>
+        <li><i class="fas fa-child"></i> Member of BALA MAHOTSAV (State Level Children Fest, January 2025)</li>
+        <li><i class="fas fa-shield-alt"></i> Member of Anti-Ragging Community (2025-2026)</li>
+        <li><i class="fas fa-hands-helping"></i> Volunteer, Student Activity Council (SAC)</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer reveal">
+    <i class="far fa-copyright"></i> 2026 Danda Rishitha Chowdary | Professional portfolio with interactive particle background & detailed measurable skills
+  </footer>
+</div>
+
+<script>
+  (function() {
+    // Advanced Particle Network Background
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth, height = window.innerHeight;
+    let particlesArray = [];
+    const PARTICLE_COUNT = 110;
+    const MAX_DIST = 160;
+
+    class FlowParticle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.45;
+        this.vy = (Math.random() - 0.5) * 0.35;
+        this.size = Math.random() * 2.2 + 1;
+        this.color = `rgba(80, 180, 255, ${Math.random() * 0.5 + 0.2})`;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < -40) this.x = width + 40;
+        if (this.x > width + 40) this.x = -40;
+        if (this.y < -40) this.y = height + 40;
+        if (this.y > height + 40) this.y = -40;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = "#3b82f6";
+      }
+    }
+
+    function initParticles() {
+      particlesArray = [];
+      for (let i = 0; i < PARTICLE_COUNT; i++) particlesArray.push(new FlowParticle());
+    }
+    function drawConnections() {
+      for (let i = 0; i < particlesArray.length; i++) {
+        for (let j = i + 1; j < particlesArray.length; j++) {
+          const dx = particlesArray[i].x - particlesArray[j].x;
+          const dy = particlesArray[i].y - particlesArray[j].y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < MAX_DIST) {
+            ctx.beginPath();
+            ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+            ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+            ctx.strokeStyle = `rgba(75, 150, 255, ${(1 - dist / MAX_DIST) * 0.35})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+    function animateBg() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = '#03050b';
+      ctx.fillRect(0, 0, width, height);
+      for (let p of particlesArray) { p.update(); p.draw(); }
+      drawConnections();
+      requestAnimationFrame(animateBg);
+    }
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initParticles();
+    });
+    canvas.width = width;
+    canvas.height = height;
+    initParticles();
+    animateBg();
+
+    // Scroll reveal + skill bar fill animation
+    const revealElements = document.querySelectorAll('.reveal');
+    function applyReveal() {
+      const windowHeight = window.innerHeight;
+      for (let el of revealElements) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight - 100) el.classList.add('revealed');
+      }
+      document.querySelectorAll('.progress-fill').forEach(fill => {
+        if (fill.closest('.reveal')?.classList.contains('revealed') && !fill.style.width) {
+          const widthVal = fill.getAttribute('data-width');
+          if (widthVal) fill.style.width = widthVal + '%';
+        }
+      });
+    }
+    window.addEventListener('scroll', applyReveal);
+    window.addEventListener('load', () => {
+      applyReveal();
+      setTimeout(() => { applyReveal(); }, 200);
+    });
+  })();
+</script>
+</body>
+</html>
